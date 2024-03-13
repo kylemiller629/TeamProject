@@ -1,0 +1,20 @@
+curl --request GET http://localhost:8080/fbtr/services/trails/json
+curl --request GET http://localhost:8080/fbtr/services/trails/plain
+curl --request GET http://localhost:8080/fbtr/services/trails/json/1
+curl --request GET http://localhost:8080/fbtr/services/trails/plain/1
+curl --request DELETE http://localhost:8080/fbtr/services/trails/1
+curl --request PUT --data "id=2&name=Updated Trail Name" http://localhost:8080/fbtr/services/trails/
+curl --request POST --data "name=New Trail Name&length=10&units=miles&description=fun trail&website=camba.com&latitude=124.12&longitude=654.78" http://localhost:8080/fbtr/services/trails/
+
+curl --request GET http://localhost:8080/fbtr/services/reports/json
+curl --request GET http://localhost:8080/fbtr/services/reports/plain
+curl --request GET http://localhost:8080/fbtr/services/reports/json/1
+curl --request GET http://localhost:8080/fbtr/services/reports/plain/1
+
+curl --request DELETE http://localhost:8080/fbtr/services/reports/1
+curl --request PUT --data "id=3&conditions=Updated Report conditions" http://localhost:8080/fbtr/services/reports
+curl --request POST --data "date=2019-03-13&conditions=fun&user=ima fat biker" http://localhost:8080/fbtr/services/reports/2
+
+curl --request POST --data "name=New Trail Name&length=10&units=miles&description=fun trail&website=camba.com&latitude=124.12&longitude=654.78&date=2019-03-13&conditions=fun1&user=ima fat biker1&date=2019-03-14&conditions=fun2&user=ima fat biker2" http://localhost:8080/fbtr/services/trails/with-reports
+
+
