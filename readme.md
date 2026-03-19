@@ -3,7 +3,7 @@
 ## Overview 
 With the growing popularity of winter fat biking in northern regions (riding bikes with 3.5" or larger tires in the snow), riders have found themselves in need of a single place to discover and share fat bike trails and conditions. Currently, trail information is found on various social media sites and web sites, or is simply shared in email among those "in the know". The Fat Bike Trail Reports website provides a place to aggregate fat bike trail reports, however, currently users must manually enter trail info on the site. Some users already maintain their own website for their specific trail and do not want to have to keep this information in two places.  
 
-**This RESTFul Web Service provides endpoints for developers to store trails and condition reports for those trails in a single place.**
+**This RESTFul Web Service provides endpoints for developers to use to maintain fat bike trail info and condition reports in a single place.**
 
 The service provides the following:
 
