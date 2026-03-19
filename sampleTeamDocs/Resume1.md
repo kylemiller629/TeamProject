@@ -10,18 +10,18 @@ Creating a team resume provides you with an opportunity to get to know your team
 
 Your team résumé should reflect the most predominant talents, skills and experiences your team has to offer. You will share your team resume as part of your final team project presentation. 
 
-•	Your team résumé could include, but is not limited to the following:
+Your team résumé could include, but is not limited to the following:
                              
-o	Team Name (This should be something that uniquely identifies your team)
-o	Names of each of your team members
-o	Hometown, State and/or other schools attended
-o	Special skills and/or talents of team members 
-o	Professional strengths you share
-o	Team members’ major personal accomplishments
-o	Personal hobbies or interests
-o	Pets
-o	Lastly, create a team name and consider
-•	Creating a team logo
-•	Create a team motto
+* Team Name (This should be something that uniquely identifies your team)
+* Names of each of your team members
+* Hometown, State and/or other schools attended
+* Special skills and/or talents of team members 
+* Professional strengths you share
+* Team members’ major personal accomplishments
+* Personal hobbies or interests
+* Pets
+* Lastly, create a team name and consider
+  * Creating a team logo
+  * Create a team motto
 
-Have fun with your resume!
+**Have fun with your resume!**
