@@ -49,20 +49,7 @@ The service provides the following:
 ## Service Calls
 
 * [GET /trails/json](docs/get-trails-json.md)
-* [GET /trails/plain](docs/get-trails-plain.md)
-* [GET /trails/json/:id](docs/get-trail-by-id-json.md)
-* [GET /trails/plain/:id](docs/get-trail-by-id-plain.md)
-* [GET /reports/json](docs/get-reports-json.md)
-* [GET /reports/plain](docs/get-reports-plain.md)
-* [GET /reports/json/:id](docs/get-reports-by-id-json.md)
-* [GET /reports/plain/:id](docs/get-reports-by-id-plain.md)
-* [POST /trails](docs/post-trail.md)
-* [POST /reports/:id](docs/post-report.md)
-* [POST /trails/with-reports](docs/post-trail-with-reports.md)
-* [PUT /trails/:id](docs/put-trail.md)
-* [PUT /reports/:id](docs/put-report.md)
-* [DELETE /trails/:id](docs/delete-trail.md)
-* [DELETE /reports/:id](docs/delete-report.md)
+
 
 ---
 ## Curl list
