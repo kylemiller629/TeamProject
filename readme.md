@@ -1,62 +1,138 @@
-# Fat Bike Trail Reports RESTful Web Service Demo Project
 
-## Overview 
-With the growing popularity of winter fat biking in northern regions (riding bikes with 3.5" or larger tires in the snow), riders have found themselves in need of a single place to discover and share fat bike trails and conditions. Currently, trail information is found on various social media sites and web sites, or is simply shared in email among those "in the know". The Fat Bike Trail Reports website provides a place to aggregate fat bike trail reports, however, currently users must manually enter trail info on the site. Some users already maintain their own website for their specific trail and do not want to have to keep this information in two places.  
+# Random Quote Generator RESTful Web Service
 
-**This RESTFul Web Service provides endpoints for developers to use to maintain fat bike trail info and condition reports in a single place.**
+## Overview
+
+Many websites and applications display inspirational,
+motivational, or humorous quotes to engage their users.
+However, developers may not want to create and maintain
+their own collection of quotes.
+
+The Random Quote Generator RESTful Web Service provides
+a centralized collection of quotes that developers can
+access and incorporate into their own applications.
+
+**This RESTful Web Service provides endpoints for
+developers to retrieve, add, update, and delete quotes,
+as well as generate random quotes based on categories.**
 
 The service provides the following:
 
-* Get a trail and its reports in plain text and json, given a trail id 
-* Get all trails and their reports in plain text and json 
-* Get all reports in plain text and json
-* Get a report in plain text and json given a report id
-* Add a trail 
-* Add a report for a trail, given a trail id 
-* Add a trail and one or more reports for that trail
-* Update a trail, given a trail id
-* Update a report, given a report id 
-* Delete a trail and its associated reports, given a trail id 
-* Delete a report, given a report id 
+- Get a random quote
+- Get all quotes
+- Get a quote by its ID
+- Get quotes by category
+- Add a new quote
+- Update an existing quote
+- Delete a quote
+- Get all categories
+- Add a new category
+- Update an existing category
+- Delete a category
+
+All responses will be returned in JSON format.
 
 ---
+
 ## Resources
 
-#### Trail
+#### Quote
 
-| Property  | Description | Type/Format | 
-| ---------------| ----------- | ----------- |   
-| id| unique identifier| number|
-| name| Trail name, for example "Big Easy" | string |
-| length| Trail length. | number |
-| unit| Trail length units. For example, "mi" or "km".| string |
-| description| Trail description. For example, "Flat, wide loop trail groomed by the Birkie. Excellent for beginners." | string |
-| website| Website url for more trail info. For example, "http://cambatrails.org". | string |  
-| latitude | Latitude of the trail head. For example,  | number |  46.106941 | 
-| longitude | Longitude of the trail head. For example,  | number | -91.298243 | 
+| Property | Description | Type/Format |
+|----------|-------------|-------------|
+| id | Unique quote identifier | number |
+| text | The quote's text | string |
+| author | Person credited with the quote | string |
+| categoryId | ID of the associated category | number |
 
+#### Category
 
-#### Report
+| Property | Description | Type/Format |
+|----------|-------------|-------------|
+| id | Unique category identifier | number |
+| name | Category name, such as Motivation, Success, or Humor | string |
+| description | Description of the category | string |
 
-| Property  | Description | Type/Format | 
-| ---------------| ----------- | ----------- |   
-| id| unique identifier| number|
-| date| Report date. The date is in the format YYYY-MM-DD, for example 2019-03-19 | String in the format YYYY-MM-DD | 
-| conditions| Description of the trail conditions. | string |
-| user| User making the report.| string | 
-
+---
 
 ## Service Calls
 
-* [GET /trails/json](docs/get-trails-json.md)
+### Quote Endpoints
 
+- `GET /quotes` - Retrieve all quotes
+- `GET /quotes/{id}` - Retrieve a quote by ID
+- `GET /quotes/random` - Retrieve a random quote
+- `GET /quotes?category={id}` - Retrieve quotes by category
+- `POST /quotes` - Add a new quote
+- `PUT /quotes/{id}` - Update an existing quote
+- `DELETE /quotes/{id}` - Delete a quote
+
+### Category Endpoints
+
+- `GET /categories` - Retrieve all categories
+- `GET /categories/{id}` - Retrieve a category by ID
+- `POST /categories` - Add a new category
+- `PUT /categories/{id}` - Update a category
+- `DELETE /categories/{id}` - Delete a category
 
 ---
-## Curl list
 
- [Curls for easy copy/paste](docs/curls.txt)
+## Example JSON Response
+
+GET /quotes/random
+
+```json
+{
+  "id": 1,
+  "text": "Small steps lead to big changes.",
+  "author": "Anonymous",
+  "categoryId": 1
+}
+```
 
 ---
-This document was motivated by https://gist.github.com/iros/3426278
+
+## Technologies
+
+- Java
+- Jersey RESTful Web Services
+- Hibernate
+- MySQL
+- Maven
+- JUnit
+- Git and GitHub
+- AWS for deployment
 
 ---
+
+## Project Objectives
+
+- Develop a reusable RESTful web service using Java.
+- Implement CRUD operations for quotes and categories.
+- Use Hibernate to manage database persistence.
+- Implement a relationship between quotes and categories.
+- Allow developers to retrieve random quotes.
+- Support filtering quotes by category.
+- Return JSON responses with appropriate HTTP status codes.
+- Implement unit and integration tests.
+- Generate JavaDoc documentation.
+- Deploy the web service to AWS.
+- Publish API documentation for developers.
+
+---
+
+## API Documentation
+
+Detailed endpoint documentation and example requests
+will be available in the `docs/` directory.
+
+- [API Consumer Guide](docs/api-guide.md)
+- [cURL Examples](docs/curls.txt)
+
+---
+
+## Team
+
+Developed by a team of three Madison College
+IT Software Development students as part of
+the Enterprise Java course.
