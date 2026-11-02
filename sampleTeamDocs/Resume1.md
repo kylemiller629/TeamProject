@@ -1,27 +1,38 @@
-### Background
 
-Each of you has a unique array of talents, skills and experiences to offer your team. When working in teams, it is important to understand what each person brings to the group. This way, you will be able to leverage each of your individual talents, skills and experiences for the good of the group.
+## Team Resume
 
-### Purpose
+### Kyle Miller
 
-Creating a team resume provides you with an opportunity to get to know your teammates and gain an understanding of the wide array of talents, skills and experiences each of you can bring to your group.
+**Hometown:** Keshena, Wisconsin
 
-### Specs
+**Education:** Madison College — IT Software Development  
+*Expected Graduation: December 2026*
 
-Your team résumé should reflect the most predominant talents, skills and experiences your team has to offer. You will share your team resume as part of your final team project presentation. 
+#### Technical Skills
+- Java and Object-Oriented Programming
+- RESTful APIs and Web Services
+- MySQL and Hibernate
+- JavaScript, HTML, CSS, and PHP
+- AWS Cloud Services
+- Git and GitHub
+- Microsoft Excel and Data Analysis
 
-Your team résumé could include, but is not limited to the following:
-                             
-* Team Name (This should be something that uniquely identifies your team)
-* Names of each of your team members
-* Hometown, State and/or other schools attended
-* Special skills and/or talents of team members 
-* Professional strengths you share
-* Team members’ major personal accomplishments
-* Personal hobbies or interests
-* Pets
-* Lastly, create a team name and consider
-  * Creating a team logo
-  * Create a team motto
+#### Professional Strengths
+- Problem-solving and analytical thinking
+- Communication and teamwork
+- Adaptability and willingness to learn
+- Organization and attention to detail
+- Troubleshooting and debugging
 
-**Have fun with your resume!**
+#### Professional Experience & Accomplishments
+- Gained professional experience through the Renewable Energy Program, supporting community projects and data reporting.
+- Developed and deployed a Java web application using AWS.
+- Created data visualizations and digital tools to support renewable energy initiatives.
+- Pursuing an Associate Degree in IT Software Development while gaining hands-on software development experience.
+
+#### Hobbies & Interests
+- Running and weightlifting
+- Technology and programming
+- Video games
+- Continuous learning and personal development
+
