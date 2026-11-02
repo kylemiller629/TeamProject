@@ -1,4 +1,3 @@
-Following is one possible format for your team project plan. Feel free to use another tool that integrates better, such as [Github Projects](https://docs.github.com/en/issues/planning-and-tracking-with-projects/learning-about-projects/quickstart-for-projects)
 
 ## Week 9
 
