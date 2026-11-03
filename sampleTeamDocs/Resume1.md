@@ -35,4 +35,41 @@
 - Technology and programming
 - Video games
 - Continuous learning and personal development
+  
+
+### Katie Schmidt
+
+**Hometown:** Watertown, Wisconsin
+
+**Education:** Madison College — IT Software Development  
+*Expected Graduation: December 2026*
+
+#### Technical Skills
+- Java and Object-Oriented Programming
+- RESTful APIs and Web Services
+- MySQL and Hibernate
+- JavaScript, HTML, CSS
+- AWS Cloud Services
+- Git and GitHub
+- Microsoft Excel and Data Analysis
+
+#### Professional Strengths
+- Cross-funcitonal Experience 
+- Self-direction and Initiative 
+- Prioritization Under Pressure
+- Technical Versitility
+- Resourcefulness 
+
+#### Professional Experience & Accomplishments
+- Extensive healthcare experience 
+- Experience in team leadership as a clinic manager
+- Software/Game developer Intern
+- Pursuing an Associate Degree in IT Software Development while gaining hands-on software development experience.
+
+#### Hobbies & Interests
+- Camping and outdoor recreation
+- Gardening
+- Crocheting
+- Creative Design & DIY projects
+
 
