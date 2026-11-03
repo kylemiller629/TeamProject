@@ -4,15 +4,15 @@
 - [X] Each team member complete the Week 9 readings
 - [X] Each team member read the Team Project instructions and related Slack Posts
 - [X] Each team member complete the Week 9 exercise (or complete as a team)
-- [X] Schedule first meeting //TODO add who will do this
-- [X] Create Team Resume //TODO add who will lead this
-- [X] Create Ground Rules //TODO add who will lead this
-- [X] Create Team Repository //TODO add who will lead this
+- [X] Schedule first meeting 
+- [X] Create Team Resume 
+- [X] Create Ground Rules 
+- [X] Create Team Repository 
 - [X] All team members brainstorm project Ideas. Remember that you are creating a RESTFul API. 
 - [X] All team members finalize project Idea
-- [X] Create Readme.md with problem statement and solution //TODO add who will lead this
-- [X] Design service resources and service calls/operations //TODO add who will lead this
-- [X] Open issue for Team Checkpoint #1 //TODO add who will lead this
+- [X] Create Readme.md with problem statement and solution 
+- [X] Design service resources and service calls/operations 
+- [X] Open issue for Team Checkpoint #1 
 - [X] Complete the rest of this plan
 
 
