@@ -36,3 +36,42 @@
 - Video games
 - Continuous learning and personal development
 
+
+### Drew Weise
+
+**Hometown:** Madison, Wisconsin
+
+**Education:** Madison College — IT Software Development  
+*Expected Graduation: December 2026*
+
+#### Technical Skills
+- Java and Object-Oriented Programming
+- RESTful APIs and Web Services
+- MySQL and Hibernate
+- JavaScript, HTML, CSS
+- AWS Cloud Services
+- Git and GitHub
+
+#### Professional Strengths
+- Breaking complicated problems into manageable steps
+- Explaining technical ideas clearly
+- Working effectively with others
+- Learning unfamiliar tools and technologies
+- Staying organized while managing details
+- Investigating errors and finding practical solutions
+
+#### Professional Experience & Accomplishments
+- Built a recipe-focused web application with Java and MySQL.
+- Created database features for users, recipes, and ingredients.
+- Worked with Hibernate to connect Java objects to database tables.
+- Added AWS Cognito login and deployed the application with AWS.
+- Used debugging and testing to follow problems between the browser, Java code, and database.
+
+#### Hobbies & Interests
+- Calisthenics
+- Learning Piano 
+- Meditation as a Lifestyle
+- Podcasts & Audiobooks
+- Regular books :)
+- Camping
+
