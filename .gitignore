@@ -56,3 +56,9 @@ crashlytics-build.properties
 fabric.properties
 
 .DS_Store
+
+# Ignore sensitive properties files
+**/*.properties
+
+# Ignore Hibernate configuration files containing credentials
+**/hibernate.cfg.xml
