@@ -6,11 +6,10 @@ import javax.persistence.Entity;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * The type Quote.
- */
+//TODO Add table and column names
+
 @Entity
-@Table(name = /**TODO*/)
+@Table(name = "")
 /** Represents a Quote in TeamProject
  * @author dweise
  */
@@ -18,13 +17,13 @@ public class Quote {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = /**TODO*/)
+    @Column(name = "")
     private int quoteId;
 
-    @Column(name = /**TODO*/, nullable = false)
+    @Column(name = "", nullable = false)
     private String quote;
 
-    @Column(name = /**TODO*/)
+    @Column(name = "")
     private String author;
 
     @OneToMany(mappedBy = "quote", fetch = FetchType.EAGER)
