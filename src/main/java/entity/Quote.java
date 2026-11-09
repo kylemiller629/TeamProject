@@ -13,7 +13,7 @@ import java.util.List;
 public class Quote {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "quote_id")
     private int quoteId;
 

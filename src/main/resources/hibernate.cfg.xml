@@ -15,6 +15,8 @@
         <property name="org.hibernate.dialect.MySQLDialect"></property>
 
         <mapping class="entity.Quote"/>
+        <mapping class="entity.QuoteCategory"/>
+        <mapping class="entity.Category"/>
 
 
     </session-factory>
