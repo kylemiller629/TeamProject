@@ -1,7 +1,5 @@
 package entity;
 
-//TODO add table and column names
-
 import jakarta.persistence.*;
 
 @Entity

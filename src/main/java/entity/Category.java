@@ -5,8 +5,6 @@ import jakarta.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
-//TODO Add table and column names
-
 @Entity
 @Table(name = "categories")
 /** Represents a Category in TeamProject
