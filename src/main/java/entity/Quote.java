@@ -2,7 +2,6 @@ package entity;
 
 import jakarta.persistence.*;
 
-import javax.persistence.Entity;
 import java.util.ArrayList;
 import java.util.List;
 
