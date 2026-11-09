@@ -5,7 +5,7 @@ package entity;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "")
+@Table(name = "quote_category")
 /** Represents a Quotes Categories in TeamProject
  * @author dweise
  */
@@ -13,17 +13,17 @@ public class QuoteCategory {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "")
+    @Column(name = "quote_category_id")
     private int quoteCategoryId;
 
     /** The quote category */
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "", nullable = false)
+    @JoinColumn(name = "quote_id", nullable = false)
     private Quote quote;
 
     /** The categories quote */
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "", nullable = false)
+    @JoinColumn(name = "category_id", nullable = false)
     private Category category;
 
     /** Required by Hibernate. */
@@ -59,8 +59,6 @@ public class QuoteCategory {
     public String toString() {
         return "QuoteCategory{" +
                 "quoteCategoryId=" + quoteCategoryId +
-                ", quote=" + quote +
-                ", category=" + category +
                 '}';
     }
 }

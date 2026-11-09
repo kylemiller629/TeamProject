@@ -5,10 +5,8 @@ import jakarta.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
-//TODO Add table and column names
-
 @Entity
-@Table(name = "")
+@Table(name = "quotes")
 /** Represents a Quote in TeamProject
  * @author dweise
  */
@@ -16,13 +14,13 @@ public class Quote {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "")
+    @Column(name = "quote_id")
     private int quoteId;
 
-    @Column(name = "", nullable = false)
+    @Column(name = "quote", nullable = false)
     private String quote;
 
-    @Column(name = "")
+    @Column(name = "author")
     private String author;
 
     @OneToMany(mappedBy = "quote", fetch = FetchType.EAGER)
@@ -58,16 +56,12 @@ public class Quote {
     /** @return the quote categories*/
     public List<QuoteCategory> getQuoteCategory(){return quoteCategory;}
 
-    /** Sets the quote category */
-    public void setQuoteCategory(List<QuoteCategory> quoteCategory) {this.quoteCategory = quoteCategory;}
-
     @Override
     public String toString() {
         return "Quote{" +
                 "quoteId=" + quoteId +
                 ", quote='" + quote + '\'' +
                 ", author='" + author + '\'' +
-                ", quoteCategory=" + quoteCategory +
                 '}';
     }
 }

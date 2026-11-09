@@ -8,7 +8,7 @@ import java.util.List;
 //TODO Add table and column names
 
 @Entity
-@Table(name = "")
+@Table(name = "categories")
 /** Represents a Category in TeamProject
  * @author dweise
  */
@@ -16,13 +16,13 @@ public class Category {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "")
+    @Column(name = "category_id")
     private int categoryId;
 
-    @Column(name = "", nullable = false)
+    @Column(name = "category", nullable = false)
     private String category;
 
-    @Column(name = "")
+    @Column(name = "description")
     private String description;
 
     @OneToMany(mappedBy = "category", fetch = FetchType.EAGER)
@@ -60,16 +60,12 @@ public class Category {
     /** @return the quote category */
     public List<QuoteCategory> getQuoteCategory() {return quoteCategory;}
 
-    /** @param quoteCategory Sets the quote category */
-    public void setQuoteCategory(List<QuoteCategory> quoteCategory) {this.quoteCategory = quoteCategory;}
-
     @Override
     public String toString() {
         return "Category{" +
                 "categoryId=" + categoryId +
                 ", category='" + category + '\'' +
                 ", description='" + description + '\'' +
-                ", quoteCategory=" + quoteCategory +
                 '}';
     }
 }
