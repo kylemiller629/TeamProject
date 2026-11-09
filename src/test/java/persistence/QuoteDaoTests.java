@@ -7,6 +7,10 @@ import util.Database;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * Tests the CRUD and search operations provided by GenericDao
+ *
+ */
 public class QuoteDaoTests {
     private GenericDao<Quote> quoteDao;
 
