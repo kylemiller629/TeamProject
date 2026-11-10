@@ -3,40 +3,27 @@
 
 ## Overview
 
-Many websites and applications display inspirational,
-motivational, or humorous quotes to engage their users.
-However, developers may not want to create and maintain
-their own collection of quotes.
+Many websites and applications display inspirational, motivational, or humorous quotes to engage users. However, developers may not want to maintain their own collection of quotes or integrate multiple quote services into their applications.
 
-The Random Quote Generator RESTful Web Service provides
-a centralized collection of quotes that developers can
-access and incorporate into their own applications.
+Our Random Quote Generator RESTful Web Service provides a centralized way for developers to retrieve quotes based on specific categories.
 
-**This RESTful Web Service provides endpoints for
-developers to retrieve, add, update, and delete quotes,
-as well as generate random quotes based on categories.**
+**What makes our service different is its ability to combine locally stored quotes with quotes retrieved from an external API, while providing category-based filtering through a single service.**
 
-The service provides the following:
+The service will provide the following:
 
-- Get a random quote
-- Get all quotes
-- Get a quote by its ID
-- Get quotes by category
-- Add a new quote
-- Update an existing quote
-- Delete a quote
-- Get all categories
-- Add a new category
-- Update an existing category
-- Delete a category
-
-All responses will be returned in JSON format.
+- Retrieve all locally stored quotes
+- Retrieve a quote by ID
+- Generate a random quote
+- Generate a random quote by category
+- Retrieve quotes from an external API
+- Return consistent JSON responses
+- Use locally stored quotes when the external service is unavailable
 
 ---
 
 ## Resources
 
-#### Quote
+### Quote
 
 | Property | Description | Type/Format |
 |----------|-------------|-------------|
@@ -45,7 +32,7 @@ All responses will be returned in JSON format.
 | author | Person credited with the quote | string |
 | categoryId | ID of the associated category | number |
 
-#### Category
+### Category
 
 | Property | Description | Type/Format |
 |----------|-------------|-------------|
@@ -59,27 +46,22 @@ All responses will be returned in JSON format.
 
 ### Quote Endpoints
 
-- `GET /quotes` - Retrieve all quotes
+- `GET /quotes` - Retrieve all locally stored quotes
 - `GET /quotes/{id}` - Retrieve a quote by ID
 - `GET /quotes/random` - Retrieve a random quote
-- `GET /quotes?category={id}` - Retrieve quotes by category
-- `POST /quotes` - Add a new quote
-- `PUT /quotes/{id}` - Update an existing quote
-- `DELETE /quotes/{id}` - Delete a quote
+- `GET /quotes/random?category={id}` - Retrieve a random quote by category
+- `GET /quotes/external` - Retrieve a quote from an external service
 
 ### Category Endpoints
 
 - `GET /categories` - Retrieve all categories
 - `GET /categories/{id}` - Retrieve a category by ID
-- `POST /categories` - Add a new category
-- `PUT /categories/{id}` - Update a category
-- `DELETE /categories/{id}` - Delete a category
 
 ---
 
 ## Example JSON Response
 
-GET /quotes/random
+`GET /quotes/random`
 
 ```json
 {
@@ -96,6 +78,8 @@ GET /quotes/random
 
 - Java
 - Jersey RESTful Web Services
+- Jersey Client for external API integration
+- Jackson for JSON processing
 - Hibernate
 - MySQL
 - Maven
@@ -108,14 +92,16 @@ GET /quotes/random
 ## Project Objectives
 
 - Develop a reusable RESTful web service using Java.
-- Implement CRUD operations for quotes and categories.
-- Use Hibernate to manage database persistence.
+- Integrate an external quote API using Jersey Client.
+- Store quotes and categories using Hibernate and MySQL.
 - Implement a relationship between quotes and categories.
 - Allow developers to retrieve random quotes.
-- Support filtering quotes by category.
-- Return JSON responses with appropriate HTTP status codes.
+- Support category-based quote filtering.
+- Provide consistent JSON responses with appropriate HTTP status codes.
+- Handle external API errors and unavailable services.
+- Use locally stored quotes as a fallback when the external service is unavailable.
 - Implement unit and integration tests.
-- Generate JavaDoc documentation.
+- Generate HTML JavaDoc documentation.
 - Deploy the web service to AWS.
 - Publish API documentation for developers.
 
@@ -123,8 +109,7 @@ GET /quotes/random
 
 ## API Documentation
 
-Detailed endpoint documentation and example requests
-will be available in the `docs/` directory.
+Detailed endpoint documentation and example requests will be available in the `docs/` directory.
 
 - [API Consumer Guide](docs/api-guide.md)
 - [cURL Examples](docs/curls.txt)
@@ -133,6 +118,4 @@ will be available in the `docs/` directory.
 
 ## Team
 
-Developed by a team of three Madison College
-IT Software Development students as part of
-the Enterprise Java course.
+Developed by a team of three Madison College IT Software Development students as part of the Enterprise Java course.
