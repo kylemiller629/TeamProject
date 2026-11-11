@@ -8,7 +8,8 @@ import org.apache.logging.log4j.Logger;
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.client.WebTarget;
-import java.io.IOException;
+import javax.ws.rs.core.MediaType;
+
 
 /**
  * DAO to connect to external API
@@ -31,7 +32,7 @@ public class ExternalQuoteDao {
         this.apiKey = apiKey;
     }
 
-    public ExternalQuote[] getQuotes(String category) throws IOException {
+    public ExternalQuote[] getQuotes(String category) {
 
         // create jersey client
         Client client = ClientBuilder.newClient();
@@ -42,7 +43,7 @@ public class ExternalQuoteDao {
                     .queryParam("categories", category);
 
             //send the GET request
-            String jsonResponse = target.request()
+            String jsonResponse = target.request(MediaType.APPLICATION_JSON)
                     .header("X-Api-Key", apiKey)
                     .get(String.class);
 

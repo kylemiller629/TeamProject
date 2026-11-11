@@ -27,4 +27,17 @@ class ExternalQuoteDaoTest {
         System.out.println("Author " + quotes[0].getAuthor());
         System.out.println("Categories " + quotes[0].getCategories());
     }
+
+    @Test
+    void testInvalidApiKey() throws Exception {
+        String url = "https://api.api-ninjas.com/v2/randomquotes";
+        String invalidKey = "invalidApiKey";
+
+        ExternalQuoteDao dao = new ExternalQuoteDao(url, invalidKey);
+
+        ExternalQuote[] quotes = dao.getQuotes("success");
+
+        assertNotNull(quotes);
+        assertEquals(0, quotes.length);
+    }
 }
