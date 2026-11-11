@@ -2,6 +2,8 @@ package persistence;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import entity.ExternalQuote;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
@@ -13,6 +15,8 @@ import java.io.IOException;
  * @author kmiller
  */
 public class ExternalQuoteDao {
+
+    private final Logger logger = LogManager.getLogger(this.getClass());
 
     private String url;
     private String apiKey;
