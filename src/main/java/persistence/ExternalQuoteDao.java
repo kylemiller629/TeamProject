@@ -1,19 +1,55 @@
 package persistence;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import entity.ExternalQuote;
 
+import javax.ws.rs.client.Client;
+import javax.ws.rs.client.ClientBuilder;
+import javax.ws.rs.client.WebTarget;
+import java.io.IOException;
+
+/**
+ * DAO to connect to external API
+ * @author kmiller
+ */
 public class ExternalQuoteDao {
 
     private String url;
     private String apiKey;
 
     /**
-     * Dao constructor
+     * Dao constructor lets us provide the API URL and key when creating DAO
      * @param url url path
      * @param apiKey api key
      */
     public ExternalQuoteDao(String url, String apiKey) {
         this.url = url;
         this.apiKey = apiKey;
+    }
+
+    public ExternalQuote[] getQuotes(String category) throws IOException {
+
+        // create jersey client
+        Client client = ClientBuilder.newClient();
+
+        try {
+            //build request url
+            WebTarget target = client.target(url)
+                    .queryParam("categories", category);
+
+            //send the GET request
+            String jsonResponse = target.request()
+                    .header("X-Api-Key", apiKey)
+                    .get(String.class);
+
+            //convert JSON into java objects
+            ObjectMapper mapper = new ObjectMapper();
+            ExternalQuote[] quotes = mapper.readValue(jsonResponse, ExternalQuote[].class);
+
+            //return external quotes
+            return quotes;
+        } finally {
+            client.close();
+        }
     }
 }
