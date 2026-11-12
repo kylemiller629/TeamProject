@@ -58,3 +58,7 @@ fabric.properties
 .DS_Store
 
 logs/
+
+# Local database credentials
+/src/main/resources/database.properties
+/src/test/resources/database.properties

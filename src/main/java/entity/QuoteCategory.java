@@ -1,6 +1,7 @@
 package entity;
 
 import jakarta.persistence.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "quote_category")
@@ -42,12 +43,14 @@ public class QuoteCategory {
     public int getQuoteCategoryId() {return quoteCategoryId;}
 
     /** @return the quote*/
+    @JsonIgnore
     public Quote getQuote() {return quote;}
 
     /** @param quote Sets the quote */
     public void setQuote(Quote quote) {this.quote = quote;}
 
     /** @return the category */
+    @JsonIgnore
     public Category getCategory() {return category;}
 
     /** @param category Sets the category */

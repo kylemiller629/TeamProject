@@ -171,10 +171,24 @@
       <version>${jersey-version}</version>
     </dependency>
 
+    <!-- Jersey Server for REST endpoints -->
+    <dependency>
+      <groupId>org.glassfish.jersey.containers</groupId>
+      <artifactId>jersey-container-servlet</artifactId>
+      <version>${jersey-version}</version>
+    </dependency>
+
+    <!-- Jersey Jackson for JSON responses -->
+    <dependency>
+      <groupId>org.glassfish.jersey.media</groupId>
+      <artifactId>jersey-media-json-jackson</artifactId>
+      <version>${jersey-version}</version>
+    </dependency>
+
   </dependencies>
 
   <build>
-    <finalName>recipeforge</finalName>
+    <finalName>teamProject</finalName>
 
     <pluginManagement>
       <plugins>
