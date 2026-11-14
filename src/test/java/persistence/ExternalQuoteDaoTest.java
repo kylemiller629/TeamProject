@@ -1,12 +1,31 @@
 package persistence;
 
 import entity.ExternalQuote;
+import entity.Quote;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import util.Database;
+
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class ExternalQuoteDaoTest {
 
+    private GenericDao<Quote> quoteDao;
+
+    @BeforeEach
+    public void setUp() {
+        quoteDao = new GenericDao<>(Quote.class);
+
+        Database database = Database.getInstance();
+        database.runSQL("CleanDB.sql");
+    }
+
+    /**
+     * Test successful connection
+     * @throws Exception
+     */
     @Test
     void testGetQuotes() throws Exception {
 
@@ -28,6 +47,10 @@ class ExternalQuoteDaoTest {
         System.out.println("Categories " + quotes[0].getCategories());
     }
 
+    /**
+     * Tests if there's an invalid API key
+     * @throws Exception exception
+     */
     @Test
     void testInvalidApiKey() throws Exception {
         String url = "https://api.api-ninjas.com/v2/randomquotes";
@@ -39,5 +62,14 @@ class ExternalQuoteDaoTest {
 
         assertNotNull(quotes);
         assertEquals(0, quotes.length);
+    }
+
+    /** Verifies that all sample quotes are retrieved from the database. */
+    @Test
+    void getAllQuotesSuccess() {
+        List<Quote> quotes = quoteDao.getAll();
+
+        assertNotNull(quotes);
+        assertEquals(3, quotes.size());
     }
 }
