@@ -5,6 +5,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import util.Database;
 
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
@@ -70,4 +72,40 @@ public class QuoteDaoTests {
 
         assertNull(quoteDao.getById(id));
     }
+
+    /**
+     * Verifies that all sample quotes are retrieved from the database.*
+     */
+    @Test
+    void getAllQuotesSuccess() {
+        List<Quote> quotes = quoteDao.getAll();
+
+        assertNotNull(quotes);
+        assertEquals(3, quotes.size());
+    }
+
+    /**
+     * Verifies that a quote can be found using an exact property value.
+     */
+    @Test
+    void getByPropertyEqualSuccess() {
+        List<Quote> quotes = quoteDao.getByPropertyEqual("quote", "Small steps lead to big changes.");
+
+        assertNotNull(quotes);
+        assertEquals(1, quotes.size());
+        assertEquals("Small steps lead to big changes.", quotes.get(0).getQuote());
+    }
+
+    /**
+     * Verifies that a quote can be found using part of its text.
+     */
+    @Test
+    void getByPropertyLikeSuccess() {
+        List<Quote> quotes = quoteDao.getByPropertyLike("quote", "Progress");
+
+        assertNotNull(quotes);
+        assertEquals(1, quotes.size());
+        assertEquals("Progress takes practice.", quotes.get(0).getQuote());
+    }
+
 }
