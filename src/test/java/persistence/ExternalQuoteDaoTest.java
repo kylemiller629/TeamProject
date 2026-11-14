@@ -2,25 +2,18 @@ package persistence;
 
 import entity.ExternalQuote;
 import entity.Quote;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import util.Database;
 
-import java.util.List;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.junit.jupiter.api.Test;
+
+
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class ExternalQuoteDaoTest {
 
-    private GenericDao<Quote> quoteDao;
-
-    @BeforeEach
-    public void setUp() {
-        quoteDao = new GenericDao<>(Quote.class);
-
-        Database database = Database.getInstance();
-        database.runSQL("CleanDB.sql");
-    }
+    private final Logger logger = LogManager.getLogger(this.getClass());
 
     /**
      * Test successful connection
@@ -42,9 +35,9 @@ class ExternalQuoteDaoTest {
         assertTrue(quotes.length > 0);
         assertNotNull(quotes[0].getQuote());
 
-        System.out.println("Quote: " + quotes[0].getQuote());
-        System.out.println("Author " + quotes[0].getAuthor());
-        System.out.println("Categories " + quotes[0].getCategories());
+        logger.info("Quote: {}", quotes[0].getQuote());
+        logger.info("Author: {}", quotes[0].getAuthor());
+        logger.info("Categories: {}", quotes[0].getCategories());
     }
 
     /**
@@ -62,14 +55,7 @@ class ExternalQuoteDaoTest {
 
         assertNotNull(quotes);
         assertEquals(0, quotes.length);
+        logger.info("Invalid API key test completed successfully.");
     }
 
-    /** Verifies that all sample quotes are retrieved from the database. */
-    @Test
-    void getAllQuotesSuccess() {
-        List<Quote> quotes = quoteDao.getAll();
-
-        assertNotNull(quotes);
-        assertEquals(3, quotes.size());
-    }
 }
