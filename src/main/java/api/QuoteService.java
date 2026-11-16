@@ -21,7 +21,7 @@ public class QuoteService {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getQuotesByCategory(@QueryParam("category") String category) {
+    public Response getAllQuotes(@QueryParam("category") String category) {
 
         try {
             List<Quote> quotes = quoteDao.getAll();
@@ -109,5 +109,4 @@ public class QuoteService {
                     .build();
         }
     }
-
 }
