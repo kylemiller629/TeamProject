@@ -46,6 +46,11 @@ public class QuoteCategory {
     @JsonIgnore
     public Quote getQuote() {return quote;}
 
+    /** @return the category name for JSON responses */
+    public String getCategoryName() {
+        return category != null ? category.getCategory() : null;
+    }
+
     /** @param quote Sets the quote */
     public void setQuote(Quote quote) {this.quote = quote;}
 
