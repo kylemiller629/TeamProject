@@ -126,13 +126,6 @@
       <version>${hibernate.version}</version>
     </dependency>
 
-    <!-- AWS Cognito -->
-    <dependency>
-      <groupId>com.auth0</groupId>
-      <artifactId>java-jwt</artifactId>
-      <version>${java-jwt.version}</version>
-    </dependency>
-
     <!-- Jackson used to parse API responses -->
     <dependency>
       <groupId>com.fasterxml.jackson.core</groupId>

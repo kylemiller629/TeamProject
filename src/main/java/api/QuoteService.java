@@ -12,18 +12,16 @@ import javax.ws.rs.core.Response;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
-import persistence.ExternalQuoteDao;
 
 @Path("/quotes")
 public class QuoteService {
 
     private final GenericDao<Quote> quoteDao = new GenericDao<>(Quote.class);
     private final Logger logger = LogManager.getLogger(this.getClass());
-    private final String apiKey = System.getenv("API_NINJAS_KEY");
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getAllQuotes(@QueryParam("category") String category) {
+    public Response getQuotesByCategory(@QueryParam("category") String category) {
 
         try {
             List<Quote> quotes = quoteDao.getAll();
@@ -112,9 +110,4 @@ public class QuoteService {
         }
     }
 
-    private final ExternalQuoteDao externalQuoteDao =
-            new ExternalQuoteDao(
-                    "https://api.api-ninjas.com/v2/quotes",
-                    apiKey
-            );
 }
