@@ -4,7 +4,6 @@
         "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
     <session-factory>
-        <property name="connection.url">jdbc:mysql://awseb-e-dwgvpk3ewt-stack-awsebrdsdatabase-kcsnmtkvdadt.cnkas86kecus.us-east-2.rds.amazonaws.com/recipeforge?serverTimezone=America/Chicago</property>
         <property name="connection.driver_class">com.mysql.cj.jdbc.Driver</property>
 
         <property name="hibernate.c3p0.min_size">5</property>
@@ -12,7 +11,6 @@
         <property name="hibernate.c3p0.timeout">300</property>
         <property name="hibernate.c3p0.max_statements">50</property>
         <property name="hibernate.c3p0.idle_test_period">3000</property>
-        <property name="org.hibernate.dialect.MySQLDialect"></property>
 
         <mapping class="entity.Quote"/>
         <mapping class="entity.QuoteCategory"/>
