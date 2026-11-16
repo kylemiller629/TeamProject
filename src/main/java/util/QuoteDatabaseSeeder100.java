@@ -94,18 +94,20 @@ public class QuoteDatabaseSeeder100 {
         return category;
     }
 
+
     private static void createRelationshipIfMissing(
             Quote quote,
             Category category,
             GenericDao<QuoteCategory> quoteCategoryDao) {
 
-        List<QuoteCategory> existingRelationships = quoteCategoryDao.getAll();
+        List<QuoteCategory> existingRelationships =
+                quoteCategoryDao.getByTwoPropertiesEqual(
+                        "quote", quote,
+                        "category", category
+                );
 
-        for (QuoteCategory existing : existingRelationships) {
-            if (existing.getQuote().getQuoteId() == quote.getQuoteId()
-                    && existing.getCategory().getCategoryId() == category.getCategoryId()) {
-                return;
-            }
+        if (!existingRelationships.isEmpty()) {
+            return;
         }
 
         QuoteCategory quoteCategory = new QuoteCategory();
@@ -114,4 +116,5 @@ public class QuoteDatabaseSeeder100 {
 
         quoteCategoryDao.insert(quoteCategory);
     }
+
 }
