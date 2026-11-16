@@ -1,4 +1,3 @@
-
 USE ebdb;
 
 DROP TABLE IF EXISTS quote_category;
@@ -27,19 +26,3 @@ CREATE TABLE quote_category (
                                 FOREIGN KEY (quote_id) REFERENCES quotes (quote_id),
                                 FOREIGN KEY (category_id) REFERENCES categories (category_id)
 );
-
-INSERT INTO quotes (quote_id, quote, author) VALUES
-                                                 (1, 'Small steps lead to big changes.', NULL),
-                                                 (2, 'I put my to-do list on my to-do list.', NULL),
-                                                 (3, 'Progress takes practice.', NULL);
-
-INSERT INTO categories (category_id, category) VALUES
-                                                                (1, 'motivation'),
-                                                                (2, 'success'),
-                                                                (3, 'humor');
-
-INSERT INTO quote_category (quote_category_id, quote_id, category_id) VALUES
-                                                                          (1, 1, 1),
-                                                                          (2, 1, 2),
-                                                                          (3, 2, 3),
-                                                                          (4, 3, 1);
