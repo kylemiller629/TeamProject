@@ -56,7 +56,7 @@ public class ExternalQuoteDao {
 
             logger.error("External API request failed", e);
 
-            return new ExternalQuote();
+            return null;
         } finally {
             client.close();
         }

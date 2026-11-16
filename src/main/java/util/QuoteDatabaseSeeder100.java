@@ -1,3 +1,4 @@
+
 package util;
 
 import entity.Category;
@@ -24,7 +25,7 @@ public class QuoteDatabaseSeeder100 {
 
     public static ExternalQuote getExternalQuote() {
         ExternalQuoteDao externalDao = new ExternalQuoteDao(
-                "https://api.api-ninjas.com/v1/quotes",
+                "https://api.api-ninjas.com/v2/randomquotes",
                 System.getenv("API_NINJAS_KEY")
         );
 
@@ -38,54 +39,79 @@ public class QuoteDatabaseSeeder100 {
     }
 
     public static void insertQuote(ExternalQuote externalQuote) {
-        GenericDao<Quote> quoteDao = new GenericDao<Quote>(Quote.class);
-        GenericDao<Category> categoryDao = new GenericDao<Category>(Category.class);
-        GenericDao<QuoteCategory> quoteCategoryDao = new GenericDao<QuoteCategory>(QuoteCategory.class);
+        GenericDao<Quote> quoteDao = new GenericDao<>(Quote.class);
+        GenericDao<Category> categoryDao = new GenericDao<>(Category.class);
+        GenericDao<QuoteCategory> quoteCategoryDao = new GenericDao<>(QuoteCategory.class);
 
-        List<Category> existingCategories = categoryDao.getByPropertyEqual("category", externalQuote.getCategory());
-        List<Quote> existingQuotes = quoteDao.getByPropertyEqual("quote", externalQuote.getQuote());
+        Quote quote = findOrCreateQuote(externalQuote, quoteDao);
 
-        Quote quote;
-        Category category;
-
-
-        if (existingQuotes.isEmpty()) {
-            quote = new Quote();
-            quote.setQuote(externalQuote.getQuote());
-            quote.setAuthor(externalQuote.getAuthor());
-            quoteDao.insert(quote);
-        } else {
-            quote = existingQuotes.get(0);
+        if (externalQuote.getCategories() == null) {
+            return;
         }
 
-
-        if (existingCategories.isEmpty()) {
-            category = new Category();
-            category.setCategory(externalQuote.getCategory());
-            categoryDao.insert(category);
-        } else {
-            category = existingCategories.get(0);
+        for (String categoryName : externalQuote.getCategories()) {
+            Category category = findOrCreateCategory(categoryName, categoryDao);
+            createRelationshipIfMissing(quote, category, quoteCategoryDao);
         }
+    }
+
+    private static Quote findOrCreateQuote(
+            ExternalQuote externalQuote,
+            GenericDao<Quote> quoteDao) {
+
+        List<Quote> existingQuotes =
+                quoteDao.getByPropertyEqual("quote", externalQuote.getQuote());
+
+        if (!existingQuotes.isEmpty()) {
+            return existingQuotes.get(0);
+        }
+
+        Quote quote = new Quote();
+        quote.setQuote(externalQuote.getQuote());
+        quote.setAuthor(externalQuote.getAuthor());
+
+        quoteDao.insert(quote);
+
+        return quote;
+    }
+
+    private static Category findOrCreateCategory(
+            String categoryName,
+            GenericDao<Category> categoryDao) {
+
+        List<Category> existingCategories =
+                categoryDao.getByPropertyEqual("category", categoryName);
+
+        if (!existingCategories.isEmpty()) {
+            return existingCategories.get(0);
+        }
+
+        Category category = new Category();
+        category.setCategory(categoryName);
+
+        categoryDao.insert(category);
+
+        return category;
+    }
+
+    private static void createRelationshipIfMissing(
+            Quote quote,
+            Category category,
+            GenericDao<QuoteCategory> quoteCategoryDao) {
 
         List<QuoteCategory> existingRelationships = quoteCategoryDao.getAll();
 
-        boolean relationshipExists = false;
-
         for (QuoteCategory existing : existingRelationships) {
-
             if (existing.getQuote().getQuoteId() == quote.getQuoteId()
                     && existing.getCategory().getCategoryId() == category.getCategoryId()) {
-
-                relationshipExists = true;
-                break;
+                return;
             }
         }
 
-        if (!relationshipExists) {
-            QuoteCategory quoteCategory = new QuoteCategory();
-            quoteCategory.setQuote(quote);
-            quoteCategory.setCategory(category);
-            quoteCategoryDao.insert(quoteCategory);
-        }
+        QuoteCategory quoteCategory = new QuoteCategory();
+        quoteCategory.setQuote(quote);
+        quoteCategory.setCategory(category);
+
+        quoteCategoryDao.insert(quoteCategory);
     }
 }
