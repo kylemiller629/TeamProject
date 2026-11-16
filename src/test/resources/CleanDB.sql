@@ -15,7 +15,6 @@ CREATE TABLE quotes (
 CREATE TABLE categories (
                             category_id INT NOT NULL AUTO_INCREMENT,
                             category VARCHAR(100) NOT NULL,
-                            description TEXT,
                             PRIMARY KEY (category_id)
 );
 
@@ -34,10 +33,10 @@ INSERT INTO quotes (quote_id, quote, author) VALUES
                                                  (2, 'I put my to-do list on my to-do list.', NULL),
                                                  (3, 'Progress takes practice.', NULL);
 
-INSERT INTO categories (category_id, category, description) VALUES
-                                                                (1, 'Motivation', 'Quotes about getting started and keeping going.'),
-                                                                (2, 'Success', 'Quotes about progress and achievement.'),
-                                                                (3, 'Humor', 'Quotes meant to make you laugh.');
+INSERT INTO categories (category_id, category) VALUES
+                                                                (1, 'motivation'),
+                                                                (2, 'success'),
+                                                                (3, 'humor');
 
 INSERT INTO quote_category (quote_category_id, quote_id, category_id) VALUES
                                                                           (1, 1, 1),
