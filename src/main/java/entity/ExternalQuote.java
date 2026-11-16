@@ -1,6 +1,5 @@
 package entity;
 
-import java.util.List;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class ExternalQuote {
@@ -14,8 +13,8 @@ public class ExternalQuote {
 	@JsonProperty("work")
 	private String work;
 
-	@JsonProperty("categories")
-	private List<String> categories;
+	@JsonProperty("category")
+	private String category;
 
 	public void setQuote(String quote){
 		this.quote = quote;
@@ -41,11 +40,11 @@ public class ExternalQuote {
 		return work;
 	}
 
-	public void setCategories(List<String> categories){
-		this.categories = categories;
+	public void setCategory(String category) {
+		this.category = category;
 	}
 
-	public List<String> getCategories(){
-		return categories;
+	public String getCategory() {
+		return category;
 	}
 }

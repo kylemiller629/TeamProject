@@ -1,4 +1,4 @@
-package controller;
+package api;
 
 import entity.Quote;
 import entity.QuoteCategory;
@@ -15,7 +15,7 @@ import java.util.concurrent.ThreadLocalRandom;
 import persistence.ExternalQuoteDao;
 
 @Path("/quotes")
-public class QuoteController {
+public class QuoteService {
 
     private final GenericDao<Quote> quoteDao = new GenericDao<>(Quote.class);
     private final Logger logger = LogManager.getLogger(this.getClass());

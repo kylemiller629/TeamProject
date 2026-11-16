@@ -37,7 +37,7 @@ class ExternalQuoteDaoTest {
 
         logger.info("Quote: {}", quotes[0].getQuote());
         logger.info("Author: {}", quotes[0].getAuthor());
-        logger.info("Categories: {}", quotes[0].getCategories());
+        logger.info("Categories: {}", quotes[0].getCategory());
     }
 
     /**
