@@ -1,4 +1,4 @@
-package controller;
+package api;
 
 import entity.Quote;
 import entity.QuoteCategory;
@@ -12,32 +12,13 @@ import javax.ws.rs.core.Response;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
-import persistence.ExternalQuoteDao;
-
-/**
- * REST controller for retrieving quotes from the database.
- * Supports retrieving all quotes, filtering by category,
- * finding quotes by ID, and selecting a random quote.
- *
- * @author Katie Schmidt
- */
 
 @Path("/quotes")
-public class QuoteController {
+public class QuoteService {
 
     private final GenericDao<Quote> quoteDao = new GenericDao<>(Quote.class);
     private final Logger logger = LogManager.getLogger(this.getClass());
-    private final String apiKey = System.getenv("API_NINJAS_KEY");
 
-
-    /**
-     * Retrieves all quotes from the database.
-     * If a category is provided, returns only quotes
-     * that belong to that category.
-     *
-     * @param category optional category used to filter quotes
-     * @return Response containing the list of quotes
-     */
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public Response getAllQuotes(@QueryParam("category") String category) {
@@ -75,13 +56,6 @@ public class QuoteController {
         }
     }
 
-
-    /**
-     * Retrieves a quote from the database by its ID.
-     *
-     * @param id the ID of the quote to retrieve
-     * @return Response containing the quote or an error message
-     */
     @GET
     @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
@@ -107,12 +81,6 @@ public class QuoteController {
                     .build();
             }
     }
-
-    /**
-     * Retrieves a random quote from the database.
-     *
-     * @return Response containing a random quote or an error message
-     */
     @GET
     @Path("/random")
     @Produces(MediaType.APPLICATION_JSON)
@@ -141,11 +109,4 @@ public class QuoteController {
                     .build();
         }
     }
-
-    /** DAO used to communicate with the external quote API. */
-    private final ExternalQuoteDao externalQuoteDao =
-            new ExternalQuoteDao(
-                    "https://api.api-ninjas.com/v2/quotes",
-                    apiKey
-            );
 }

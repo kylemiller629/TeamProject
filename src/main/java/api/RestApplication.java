@@ -1,3 +1,4 @@
+package api;
 
 import org.glassfish.jersey.server.ResourceConfig;
 import javax.ws.rs.ApplicationPath;
@@ -16,6 +17,6 @@ public class RestApplication extends ResourceConfig {
      * the controller package for resources.
      */
     public RestApplication() {
-        packages("controller");
+        packages("api");
     }
 }

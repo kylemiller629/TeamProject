@@ -1,6 +1,6 @@
 package persistence;
 
-import entity.SessionFactoryProvider;
+import util.SessionFactoryProvider;
 import jakarta.persistence.criteria.CriteriaQuery;
 import jakarta.persistence.criteria.Expression;
 import jakarta.persistence.criteria.Root;
@@ -174,4 +174,35 @@ public class GenericDao<T> {
             return session.createSelectionQuery(query).getResultList();
         }
     }
+
+
+    /**
+     * Finds entities matching two property values.
+     *
+     * @param property1 first property name
+     * @param value1 first property value
+     * @param property2 second property name
+     * @param value2 second property value
+     * @return list of matching entities
+     */
+    public List<T> getByTwoPropertiesEqual(
+            String property1, Object value1,
+            String property2, Object value2) {
+
+        try (Session session = getSession()) {
+            HibernateCriteriaBuilder builder = session.getCriteriaBuilder();
+            CriteriaQuery<T> query = builder.createQuery(type);
+            Root<T> root = query.from(type);
+
+            query.select(root).where(
+                    builder.and(
+                            builder.equal(root.get(property1), value1),
+                            builder.equal(root.get(property2), value2)
+                    )
+            );
+
+            return session.createSelectionQuery(query).getResultList();
+        }
+    }
+
 }
