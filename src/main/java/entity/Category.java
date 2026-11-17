@@ -13,15 +13,12 @@ import java.util.List;
 public class Category {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "category_id")
     private int categoryId;
 
     @Column(name = "category", nullable = false)
     private String category;
-
-    @Column(name = "description")
-    private String description;
 
     @OneToMany(mappedBy = "category", fetch = FetchType.EAGER)
     private List<QuoteCategory> quoteCategory = new ArrayList<>();
@@ -49,12 +46,6 @@ public class Category {
     /** @param category Sets the category */
     public void setCategory(String category) {this.category = category;}
 
-    /** @return the description */
-    public String getDescription() {return description;}
-
-    /** @param description Sets the description */
-    public void setDescription(String description) {this.description = description;}
-
     /** @return the quote category */
     public List<QuoteCategory> getQuoteCategory() {return quoteCategory;}
 
@@ -63,7 +54,6 @@ public class Category {
         return "Category{" +
                 "categoryId=" + categoryId +
                 ", category='" + category + '\'' +
-                ", description='" + description + '\'' +
                 '}';
     }
 }

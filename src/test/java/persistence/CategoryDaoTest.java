@@ -35,7 +35,7 @@ public class CategoryDaoTest {
         Category category = categoryDao.getById(1);
 
         assertNotNull(category);
-        assertEquals("Motivation", category.getCategory());
+        assertEquals("motivation", category.getCategory());
     }
 
     /**
@@ -43,13 +43,13 @@ public class CategoryDaoTest {
      */
     @Test
     void insertCategorySuccess() {
-        Category category = new Category("Wisdom");
+        Category category = new Category("wisdom");
 
         int id = categoryDao.insert(category);
         Category savedCategory = categoryDao.getById(id);
 
         assertNotNull(savedCategory);
-        assertEquals("Wisdom", savedCategory.getCategory());
+        assertEquals("wisdom", savedCategory.getCategory());
     }
 
     /**
@@ -61,13 +61,13 @@ public class CategoryDaoTest {
 
         assertNotNull(category);
 
-        category.setCategory("Inspiration");
+        category.setCategory("inspiration");
         categoryDao.update(category);
 
         Category savedCategory = categoryDao.getById(1);
 
         assertNotNull(savedCategory);
-        assertEquals("Inspiration", savedCategory.getCategory());
+        assertEquals("inspiration", savedCategory.getCategory());
     }
 
     /**
@@ -75,7 +75,7 @@ public class CategoryDaoTest {
      */
     @Test
     void deleteCategorySuccess() {
-        Category category = new Category("Temporary");
+        Category category = new Category("temporary");
 
         int id = categoryDao.insert(category);
         categoryDao.delete(category);
@@ -99,11 +99,11 @@ public class CategoryDaoTest {
      */
     @Test
     void getByPropertyEqualSuccess() {
-        List<Category> categories = categoryDao.getByPropertyEqual("category", "Success");
+        List<Category> categories = categoryDao.getByPropertyEqual("category", "success");
 
         assertNotNull(categories);
         assertEquals(1, categories.size());
-        assertEquals("Success", categories.get(0).getCategory());
+        assertEquals("success", categories.get(0).getCategory());
     }
 
     /**
@@ -111,10 +111,10 @@ public class CategoryDaoTest {
      */
     @Test
     void getByPropertyLikeSuccess() {
-        List<Category> categories = categoryDao.getByPropertyLike("category", "Motiv");
+        List<Category> categories = categoryDao.getByPropertyLike("category", "motiv");
 
         assertNotNull(categories);
         assertEquals(1, categories.size());
-        assertEquals("Motivation", categories.get(0).getCategory());
+        assertEquals("motivation", categories.get(0).getCategory());
     }
 }

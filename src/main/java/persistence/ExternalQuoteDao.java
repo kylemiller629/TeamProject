@@ -32,15 +32,14 @@ public class ExternalQuoteDao {
         this.apiKey = apiKey;
     }
 
-    public ExternalQuote[] getQuotes(String category) {
+    public ExternalQuote getQuote() {
 
         // create jersey client
         Client client = ClientBuilder.newClient();
 
         try {
             //build request url
-            WebTarget target = client.target(url)
-                    .queryParam("categories", category);
+            WebTarget target = client.target(url);
 
             //send the GET request
             String jsonResponse = target.request(MediaType.APPLICATION_JSON)
@@ -49,15 +48,15 @@ public class ExternalQuoteDao {
 
             //convert JSON into java objects
             ObjectMapper mapper = new ObjectMapper();
-            ExternalQuote[] quotes = mapper.readValue(jsonResponse, ExternalQuote[].class);
+            ExternalQuote quote = mapper.readValue(jsonResponse, ExternalQuote[].class)[0];
 
-            //return external quotes
-            return quotes;
+            //return external quote
+            return quote;
         } catch (Exception e) {
 
             logger.error("External API request failed", e);
 
-            return new ExternalQuote[0];
+            return null;
         } finally {
             client.close();
         }
