@@ -13,12 +13,26 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
+/**
+ * REST service for retrieving quotes from the database.
+ * Supports retrieving all quotes, filtering by category,
+ * finding quotes by ID, and selecting a random quote.
+ *
+ * @author Katie Schmidt
+ */
 @Path("/quotes")
 public class QuoteService {
 
     private final GenericDao<Quote> quoteDao = new GenericDao<>(Quote.class);
     private final Logger logger = LogManager.getLogger(this.getClass());
 
+    /**
+     * Retrieves all quotes from the database.
+     * Filters quotes by category if one is provided.
+     *
+     * @param category optional category used to filter quotes
+     * @return Response containing the list of quotes
+     */
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public Response getAllQuotes(@QueryParam("category") String category) {
@@ -56,6 +70,12 @@ public class QuoteService {
         }
     }
 
+    /**
+     * Retrieves a quote from the database by its ID.
+     *
+     * @param id the ID of the quote to retrieve
+     * @return Response containing the quote or an error message
+     */
     @GET
     @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
@@ -81,6 +101,12 @@ public class QuoteService {
                     .build();
             }
     }
+
+    /**
+     * Retrieves a random quote from the database.
+     *
+     * @return Response containing a random quote or an error message
+     */
     @GET
     @Path("/random")
     @Produces(MediaType.APPLICATION_JSON)
