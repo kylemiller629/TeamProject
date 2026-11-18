@@ -17,7 +17,6 @@ The service will provide the following:
 - Generate a random quote by category
 - Retrieve quotes from an external API
 - Return consistent JSON responses
-- Use locally stored quotes when the external service is unavailable
 
 ---
 
@@ -50,7 +49,6 @@ The service will provide the following:
 - `GET /quotes/{id}` - Retrieve a quote by ID
 - `GET /quotes/random` - Retrieve a random quote
 - `GET /quotes/random?category={id}` - Retrieve a random quote by category
-- `GET /quotes/external` - Retrieve a quote from an external service
 
 ### Category Endpoints
 
