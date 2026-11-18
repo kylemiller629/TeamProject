@@ -43,7 +43,7 @@ public class QuoteCategoryDaoTests {
 
         assertNotNull(quoteCategory);
         assertEquals(1, quoteCategory.getQuote().getQuoteId());
-        assertEquals("Motivation", quoteCategory.getCategory().getCategory());
+        assertEquals("motivation", quoteCategory.getCategory().getCategory());
     }
 
     /**
@@ -75,7 +75,7 @@ public class QuoteCategoryDaoTests {
 
         assertNotNull(saved);
         assertEquals(2, saved.getQuote().getQuoteId());
-        assertEquals("Motivation", saved.getCategory().getCategory());
+        assertEquals("motivation", saved.getCategory().getCategory());
     }
 
     /**
@@ -95,7 +95,7 @@ public class QuoteCategoryDaoTests {
         QuoteCategory saved = quoteCategoryDao.getById(4);
 
         assertNotNull(saved);
-        assertEquals("Success", saved.getCategory().getCategory());
+        assertEquals("success", saved.getCategory().getCategory());
     }
 
     /**
