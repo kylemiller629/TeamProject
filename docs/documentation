@@ -1,10 +1,15 @@
-
 Base URL: http://teamproject-env.eba-phaigqmf.us-east-2.elasticbeanstalk.com/api
 
 GET ALL: /quotes
 
-GET QUOTE BY CATEGORY: /quotes?category=motivational
+GET QUOTE BY CATEGORY: /quotes?category=motivation
 
-GET Quote BY ID: /quotes/1
+GET QUOTE BY ID: /quotes/1
 
 GET RANDOM: /quotes/random
+
+POST QUOTE: /quotes
+
+PUT QUOTE: /quotes/{id}
+
+DELETE QUOTE: /quotes/{id}

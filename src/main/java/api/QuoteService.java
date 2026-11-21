@@ -135,4 +135,122 @@ public class QuoteService {
                     .build();
         }
     }
+
+    /**
+     * Adds a new quote to the database.
+     *
+     * @param quote the quote to add
+     * @return Response containing the newly created quote
+     */
+    @POST
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response addQuote(Quote quote) {
+
+        try {
+            if (quote == null || quote.getQuote() == null
+                    || quote.getQuote().trim().isEmpty()) {
+
+                return Response.status(Response.Status.BAD_REQUEST)
+                        .entity("Quote text is required")
+                        .build();
+            }
+
+            int id = quoteDao.insert(quote);
+
+            Quote newQuote = quoteDao.getById(id);
+
+            return Response.status(Response.Status.CREATED)
+                    .entity(newQuote)
+                    .build();
+
+        } catch (Exception e) {
+            logger.error("Error adding quote", e);
+
+            return Response.status(Response.Status.INTERNAL_SERVER_ERROR)
+                    .entity("An error occurred while adding the quote")
+                    .build();
+        }
+    }
+
+    /**
+     * Updates an existing quote in the database.
+     *
+     * @param id the ID of the quote to update
+     * @param updatedQuote the updated quote information
+     * @return Response containing the updated quote
+     */
+    @PUT
+    @Path("/{id}")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response updateQuote(@PathParam("id") int id, Quote updatedQuote) {
+
+        try {
+            Quote quote = quoteDao.getById(id);
+
+            if (quote == null) {
+                return Response.status(Response.Status.NOT_FOUND)
+                        .entity("Quote not found")
+                        .build();
+            }
+
+            if (updatedQuote == null || updatedQuote.getQuote() == null
+                    || updatedQuote.getQuote().trim().isEmpty()) {
+
+                return Response.status(Response.Status.BAD_REQUEST)
+                        .entity("Quote text is required")
+                        .build();
+            }
+
+            quote.setQuote(updatedQuote.getQuote());
+            quote.setAuthor(updatedQuote.getAuthor());
+
+            quoteDao.update(quote);
+
+            return Response.status(Response.Status.OK)
+                    .entity(quote)
+                    .build();
+
+        } catch (Exception e) {
+            logger.error("Error updating quote with ID: " + id, e);
+
+            return Response.status(Response.Status.INTERNAL_SERVER_ERROR)
+                    .entity("An error occurred while updating the quote")
+                    .build();
+        }
+    }
+
+    /**
+     * Deletes a quote from the database.
+     *
+     * @param id the ID of the quote to delete
+     * @return Response indicating whether the quote was deleted
+     */
+    @DELETE
+    @Path("/{id}")
+    public Response deleteQuote(@PathParam("id") int id) {
+
+        try {
+            Quote quote = quoteDao.getById(id);
+
+            if (quote == null) {
+                return Response.status(Response.Status.NOT_FOUND)
+                        .entity("Quote not found")
+                        .build();
+            }
+
+            quoteDao.delete(quote);
+
+            return Response.status(Response.Status.NO_CONTENT)
+                    .build();
+
+        } catch (Exception e) {
+            logger.error("Error deleting quote with ID: " + id, e);
+
+            return Response.status(Response.Status.INTERNAL_SERVER_ERROR)
+                    .entity("An error occurred while deleting the quote")
+                    .build();
+        }
+    }
 }
