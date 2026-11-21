@@ -135,4 +135,41 @@ public class QuoteService {
                     .build();
         }
     }
+
+    /**
+     * Adds a new quote to the database.
+     *
+     * @param quote the quote to add
+     * @return Response containing the newly created quote
+     */
+    @POST
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response addQuote(Quote quote) {
+
+        try {
+            if (quote == null || quote.getQuote() == null
+                    || quote.getQuote().trim().isEmpty()) {
+
+                return Response.status(Response.Status.BAD_REQUEST)
+                        .entity("Quote text is required")
+                        .build();
+            }
+
+            int id = quoteDao.insert(quote);
+
+            Quote newQuote = quoteDao.getById(id);
+
+            return Response.status(Response.Status.CREATED)
+                    .entity(newQuote)
+                    .build();
+
+        } catch (Exception e) {
+            logger.error("Error adding quote", e);
+
+            return Response.status(Response.Status.INTERNAL_SERVER_ERROR)
+                    .entity("An error occurred while adding the quote")
+                    .build();
+        }
+    }
 }
