@@ -220,4 +220,37 @@ public class QuoteService {
                     .build();
         }
     }
+
+    /**
+     * Deletes a quote from the database.
+     *
+     * @param id the ID of the quote to delete
+     * @return Response indicating whether the quote was deleted
+     */
+    @DELETE
+    @Path("/{id}")
+    public Response deleteQuote(@PathParam("id") int id) {
+
+        try {
+            Quote quote = quoteDao.getById(id);
+
+            if (quote == null) {
+                return Response.status(Response.Status.NOT_FOUND)
+                        .entity("Quote not found")
+                        .build();
+            }
+
+            quoteDao.delete(quote);
+
+            return Response.status(Response.Status.NO_CONTENT)
+                    .build();
+
+        } catch (Exception e) {
+            logger.error("Error deleting quote with ID: " + id, e);
+
+            return Response.status(Response.Status.INTERNAL_SERVER_ERROR)
+                    .entity("An error occurred while deleting the quote")
+                    .build();
+        }
+    }
 }
