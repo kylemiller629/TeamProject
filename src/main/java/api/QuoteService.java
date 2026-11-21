@@ -172,4 +172,52 @@ public class QuoteService {
                     .build();
         }
     }
+
+    /**
+     * Updates an existing quote in the database.
+     *
+     * @param id the ID of the quote to update
+     * @param updatedQuote the updated quote information
+     * @return Response containing the updated quote
+     */
+    @PUT
+    @Path("/{id}")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response updateQuote(@PathParam("id") int id, Quote updatedQuote) {
+
+        try {
+            Quote quote = quoteDao.getById(id);
+
+            if (quote == null) {
+                return Response.status(Response.Status.NOT_FOUND)
+                        .entity("Quote not found")
+                        .build();
+            }
+
+            if (updatedQuote == null || updatedQuote.getQuote() == null
+                    || updatedQuote.getQuote().trim().isEmpty()) {
+
+                return Response.status(Response.Status.BAD_REQUEST)
+                        .entity("Quote text is required")
+                        .build();
+            }
+
+            quote.setQuote(updatedQuote.getQuote());
+            quote.setAuthor(updatedQuote.getAuthor());
+
+            quoteDao.update(quote);
+
+            return Response.status(Response.Status.OK)
+                    .entity(quote)
+                    .build();
+
+        } catch (Exception e) {
+            logger.error("Error updating quote with ID: " + id, e);
+
+            return Response.status(Response.Status.INTERNAL_SERVER_ERROR)
+                    .entity("An error occurred while updating the quote")
+                    .build();
+        }
+    }
 }
